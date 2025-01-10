@@ -242,9 +242,10 @@ func (t *Tree) delete(node *Node, key int) *Node {
 			maxNode := node.maximumNode()
 			node.Key = maxNode.Key
 			node.Value = maxNode.Value
-			node.Right = t.delete(node.Right, maxNode.Key)
+			node.Left = t.delete(node.Left, maxNode.Key)
 		}
 	}
+	t.updHeight(node)
 	return node
 }
 
